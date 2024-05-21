@@ -1,6 +1,7 @@
 # Social Media - Android client
 This is the code part of the social media android client in our project. You can find the [API server & web client](https://github.com/MeitarTeper/SocialMedia) and the [TCP server](https://github.com/MeitarTeper/SocialMedia-TCP-Server) in a different repesatories.
-for further explanation please open the main repository of this project- the [API server & web client](https://github.com/MeitarTeper/SocialMedia).
+
+For further explanation please open the main repository of this project- the [API server & web client](https://github.com/MeitarTeper/SocialMedia).
 
 ## Executing The Program
 To run the android client, open the android studio app on the android client folder. make sure that your android sdk has a correct config, and run it from there (of course you can run it both on an emulator, a phisycal device).

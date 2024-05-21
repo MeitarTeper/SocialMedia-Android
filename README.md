@@ -1,69 +1,12 @@
+# Social Media - Android client
+This is the code part of the social media android client in our project. You can find the [API server & web client](https://github.com/MeitarTeper/SocialMedia) and the [TCP server](https://github.com/MeitarTeper/SocialMedia-TCP-Server) in a different repesatories.
+for further explanation please open the main repository of this project- the [API server & web client](https://github.com/MeitarTeper/SocialMedia).
 
-Our wiki is in ProjectPart2 reposetory. 
-
-# Social Media - FooBar
-Foobar is a social media application inspired by platforms like Facebook. It provides both a web client and an Android app for users to connect and share updates. This README file provides an overview of the project, installation instructions, and details about its components.
-
-## Getting Started
-
-- Notice that for now, you can find the Web client and server in a different [repository](https://github.com/Shahar2612/ProjectPart2-Web.git).
-
-### Dependencies
-
-This project requires the following dependencies:
-
-* [Node.js](https://nodejs.org/en/) - JavaScript runtime environment
-* [npm](https://www.npmjs.com/) - Package manager for JavaScript
-* [React](https://reactjs.org/) - JavaScript library for building user interfaces
-* [MongoDB](https://www.mongodb.com/) - NoSQL database
-
-### Installation
-
-Clone the repository: 
-```bash
-git clone https://github.com/Shahar2612/ProjectPart2-Web.git
-```
-
-Download the necessary dependencies for both the web-client and the server, by running 
-
-```
-npm i --force
-```
-### Executing The Program
-
-To run the server, navigate to the server directory, and run the following command:
-
-```bash
-npm start
-```
-
-To run the web client, run the following command in the web client directory:
-
-```bash
-npm start
-```
-
-then open [http://localhost:3000](http://localhost:3000) 
-to view it in your browser.
-
+## Executing The Program
 To run the android client, open the android studio app on the android client folder. make sure that your android sdk has a correct config, and run it from there (of course you can run it both on an emulator, a phisycal device).
+- Please make sure that the TCP server and the API server is running first. It won't work without it.
 
 ## Design
-
-### Web Client workflow
-
-The client is built on React. It is responsible for displaying the user interface, and communicating with the server.
-
-There is one thing to note about the client's workflow. When a user logs in, the server returns a JWT token. The client then stores this token in local storage, and uses this token to authenticate the user in every request to the server. When the user logs out, the client deletes the token from the local storage.
-
-```mermaid
-sequenceDiagram
-    Client->>+Server: Token request
-    Server->>+Client: Token
-    Client-->>+Server: ... + Token
-    Server-->>-Client: ...
-```
-
 ### Android Client workflow
 
 Our Android client mirrors the web client's functionality, distinguished by its refined design employing the MVVM architecture.
@@ -80,87 +23,66 @@ graph LR;
      C <--> F([Web-sevice Api]);
 ```
 
-## Server API
+# What can you do?
+## log in and register
+First, you need to click on the sign up for FooBar button that will navigate you to the register page were you can create an account.
+make sure you fill your personal information correctly!
 
-The server is built on Node.js and Express.js. It's responsible for handling the client's requests, and communicating with the database.
-
-The server exposes it's functionality through a REST API. Here's a list of the API's endpoints:
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| /api/token | POST | Returns a JWT token for the user |
-| /api/users | POST | Registers a new user |
-| /api/users/:email | GET | Returns the user's information |
-| /api/users/:email | PATCH | updates the user's information |
-| /api/users/:email | DELETE | Deletes the user |
-| /api/users/:email/friends | GET | Returns the user friends |
-| /api/users/:email/friends | POST | Send a new friend request to the user |
-| /api/users/:email/friends/:fid | GET | Accept a friend request |
-| /api/users/:email/friends/:fid | DELETE | Deletes a user from the friends list |
-| /api/users/:email/friendRec/:fid | DELETE | Decline friend request |
-| /api/users/:email/posts | GET | Returns the user's posts|
-| /api/users/:email/posts | POST | Creates new post|
-| /api/users/:email/posts/:fid | DELETE | Deletes a post|
-| /api/users/:email/posts/:fid | POST | Creates a new comment|
-| /api/users/:email/posts/:fid | PATCH | Updates a post|
-| /api/users/:email/comments/:cid | GET | Returns the comment's information|
-| /api/users/:email/posts/:pid/:cid | DELETE | Deletes a comment|
-| /api/users/:email/posts/:pid/:cid | PATCH | Updates a comment|
-| /api/posts | GET | Returns 25 posts|
-
-**Note:** besides the first two endpoints, all the other endpoints require the user to be authenticated. The authentication is done by sending the JWT token in the request's header.
-
-## Server Architecture
-
-The server is designed using the MVCS architecture (except for the view, since there is no user interface). Here's a simple diagram of the server's architecture:
-
-```mermaid
-graph LR;
-    C(client) --request --> D{controller};
-    D --relevant params --> service;
-    service <--> B((data));
-    service --result --> D;
-    D --response -->C;
-```
-
-### Notes
-
-- According to the assignment instructions, when a user logs in and reaches the main page, the application displays up to 25 posts. Five of these posts are from users who are not friends with the logged-in user, while the remaining posts are from friends of the user. This ensures a diverse and dynamic feed for a better user experience.
-
-- The android client supports english, textual messages only (only ascii charachters)
-
-- The posts date times show up with times from the GMT+2 time zone
-
-## Authors
-[Shahar Chen](https://github.com/Shahar2612)  
-[Yaara Sirkis](https://github.com/YaaraSirkis)  
-[Meitar Teper](https://github.com/MeitarTeper)
-
-## Screenshots Exampels
-#### Login
 <img width="250" alt="Log in Android" src="https://github.com/Shahar2612/ProjectPart2-Android/assets/155824766/dd9d8d99-f48c-462b-b4ab-3c7158aa3ebc">
-<img width="498" alt="log in web" src="https://github.com/Shahar2612/ProjectPart2-Android/assets/155824766/ebeaf121-9953-47f5-a24e-8982e41b2c90" width = "550">
-
-#### Registration
 
 <img width="250" alt="register android" src="https://github.com/Shahar2612/ProjectPart2-Android/assets/155824766/9dd28ee3-c47e-4a1e-8895-533d0da58e3e">
-<img width="350" alt="register web" src="https://github.com/Shahar2612/ProjectPart2-Android/assets/155824766/c0ed2fc9-2aee-4e0f-bb6f-7db5d4283a86">
 
-#### Feed
+After you register you can log-in and use FooBar, make sure you fill your personal information correctly
+
+## The FooBar feed
+After you log-in you will be navigate to your feed. 
+
 <img width="250" alt="feed android"  src="https://github.com/Shahar2612/ProjectPart2-Android/assets/155824766/45ace2f4-1b03-4b47-b7af-508af44c8689">
-<img width="800" alt="feed web"  src="https://github.com/Shahar2612/ProjectPart2-Android/assets/155824766/bb1de384-a739-428a-baf0-2fc82ac4967b">
+
+* You can like and unlike a post, etc.
+* You can see the comment and the share menu.
 
 
-#### Profile | Friend Request
+### Edit user
+* You can edit your user name and picture if you click on the  menu.
+
+### Posts
+* You can add, edit and delete posts only if the posts is yours.
+
+<img width="250" alt="feed android"  src="https://github.com/Shahar2612/ProjectPart2-Android/assets/155824766/45ace2f4-1b03-4b47-b7af-508af44c8689">
+
+* If your post contain link or URL which is not safe - a message will be displayed to the user and the post will not be uploaded or updated.
+
+### Comments
+* You can add, edit and delete comments only if the comments is yours. 
+
+
+### Log-out and delete account
+* You can log out or delete your account if you click on the menu.
+
+
+### light mood to dark mood
+* You can change light mood to dark mood if you click on the sun img on the top of the screen.
+
+
+### Friends requests
+* You can see your friends requests list if you click on the friends requests button that in the bottom menu. There you can also approve or decline the requests.
 
 ![profile android](https://github.com/Shahar2612/ProjectPart2-Android/assets/155824766/4426f730-5698-45df-b8ed-e8c185e5b4aa)
-<img width="800" alt="prifile web"  src="https://github.com/Shahar2612/ProjectPart2-Android/assets/155824766/d73e94ee-3953-4826-bb2c-687b21c533d6">
-
-
-#### Accept Friend Request
 
 ![friend android](https://github.com/Shahar2612/ProjectPart2-Android/assets/155824766/f31b0d4d-3173-430d-8d70-2d25146c153e)
-![friend web](https://github.com/Shahar2612/ProjectPart2-Android/assets/155824766/6d05cb55-8eb1-4cad-a243-56f771123ef6)
 
 
+## Profile page
+### Your profile page
+* You can navigate to your profile page by clicking your user.
+There, you can see your friends and your posts
 
+
+### Friends profile page
+* You can click on the name or picture in each post and get to the personal profile page of the author of the post, where you can also send a friend request or if you are already friends - see the user posts, friends list and an option to delete the user from your friend list.
+
+## Application authors 
+[Shahar Chen](https://github.com/Shahar2612)  
+[Yaara Sirkis](https://github.com/YaaraSirkis)  
+[Meitar Teper](https://github.com/MeitarTeper) 
